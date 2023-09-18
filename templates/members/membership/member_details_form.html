@@ -1,0 +1,378 @@
+{% extends 'members/base.html' %}{% block content %} {% load static %}
+<div class="app-content-header">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Row-->
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">Membership Details</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Membership Details</li>
+        </ol>
+      </div>
+    </div>
+    <!--end::Row-->
+  </div>
+  <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+<!--begin::App Content-->
+<div class="app-content">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <div class="row">
+      <form action="" method="post">
+        {% csrf_token %} {% if first == "Single" %}
+        <section style="background-color: #eee">
+          <div class="container py-5">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+                  </div>
+                </div>
+                <!-- /.card -->
+                <div class="card mb-5">
+                  <div class="card-header border-0">
+                    <h3 class="card-title">Days Selected</h3>
+                  </div>
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-striped align-middle">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Day</th>
+                          <th>Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for day in days_selected %}
+                        <tr>
+                          <td>{{day.name}}</td>
+                          <td>{{day.days}}</td>
+                          <td>{{day.time_slot}}</td>
+                        </tr>
+
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </div>
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body mb-5">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Age</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.guardian_age}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.email}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Weight</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.guardian_weight}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Height</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.guardian_height}}</p>
+                      </div>
+                    </div>
+
+                    <hr />
+                    {% if activity == "Polo" %}
+                    <h4>Select 3 Days</h4>
+                    {% for day in days %}
+                    <div class="form-check">
+                      <input type="checkbox" required name="days" class="form-check-input Present 1" id="1" value="{{day.id}}" />
+                      <label class="form-check-label" for="flexCheckDefault"> {{day.name}} </label>
+                    </div>
+                    {% endfor %} {% else %}{% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {% else %}
+        <section style="background-color: #eee">
+          <div class="container py-5">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+                  </div>
+                </div>
+                <!-- /.card -->
+                <div class="card mb-5">
+                  <div class="card-header border-0">
+                    <h3 class="card-title">Days Selected</h3>
+                  </div>
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-striped align-middle">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Day</th>
+                          <th>Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for day in days_selected %}
+                        <tr>
+                          <td>{{day.name}}</td>
+                          <td>{{day.days}}</td>
+                          <td>{{day.time_slot}}</td>
+                        </tr>
+
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </div>
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body mb-5">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Age</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.guardian_age}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.email}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Weight</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.guardian_weight}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Height</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_one.guardian_height}}</p>
+                      </div>
+                    </div>
+                    <hr />
+
+                    {% if activity == "Polo" %}
+                    <h4>Select 3 Days</h4>
+                    {% for day in days %}
+                    <div class="form-check">
+                      <input type="checkbox" name="days" class="form-check-input Present 1" id="1" value="{{day.id}}" />
+                      <label class="form-check-label" for="flexCheckDefault"> {{day.name}} </label>
+                    </div>
+                    {% endfor %} {% else %}{% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section style="background-color: #eee">
+          <div class="container py-5">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Member Name</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member1_full_name}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Age</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member1_age}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member1_email}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Weight</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member1_weight}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Height</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member1_height}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Address</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member1_address}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section style="background-color: #eee">
+          <div class="container py-5">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Member 2 Name</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member2_full_name}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Age</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member2_age}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member2_email}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Weight</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member2_weight}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Height</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member2_height}}</p>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <p class="mb-0">Address</p>
+                      </div>
+                      <div class="col-sm-7">
+                        <p class="text-muted mb-0">{{form_alot.member2_address}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {% endif %}
+
+        <div class="d-flex justify-content-center mt-4" style="margin-bottom: 30px">
+          <input type="submit" class="btn btn-primary" value="Update" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- /.row (main row) -->
+</div>
+<!--end::Container-->
+<script src="https://uthman.komeat.com/dist_folder/jquery.js"></script>
+<script type="text/javascript">
+  $("input:checkbox").click(function () {
+    var bol = $("input:checkbox:checked").length >= 3;
+    $("input:checkbox").not(":checked").attr("disabled", bol);
+  });
+</script>
+{% endblock content %}

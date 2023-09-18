@@ -1,0 +1,54 @@
+{% extends 'members/base.html' %}{% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Notifications</h1>
+  </div>
+
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary"></h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Messag</th>
+                  <th>Read</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Messag</th>
+                  <th>Read</th>
+                  <th>Actions</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                {% for notification in notifications %} {% if notification.is_read == False %}
+                <tr>
+                  <td>{{notification.message}}</td>
+                  <td>{{notification.is_read}}</td>
+                  {{notification.pk}}
+                  <td>
+                    <a href="{% url 'view_notifications' notification.pk %}" class="btn btn-success btn-icon-split">
+                      <span class="text">View Notification</span>
+                    </a>
+                  </td>
+                </tr>
+                {% endif %} {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
